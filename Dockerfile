@@ -7,7 +7,7 @@ LABEL TAG=${TAG}
 
 WORKDIR /tmp
 
-ENV SQUID_VERSION=3.5.28 \
+ENV SQUID_VERSION=3.5.27 \
     SQUID_CACHE_DIR=/var/spool/squid \
     SQUID_LOG_DIR=/var/log/squid \
     SQUID_USER=proxy
