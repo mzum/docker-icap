@@ -13,6 +13,7 @@ ENV SQUID_VERSION=3.5.27 \
     SQUID_USER=proxy
 
 # sources.list
+RUN apt-get update
 RUN cp -p /etc/apt/sources.list /etc/apt/sources.list~
 RUN ls -l /etc/apt/
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
@@ -33,8 +34,11 @@ RUN ls -l /etc/apt/
 
 RUN apt-get install -y devscripts build-essential fakeroot libssl-dev
 RUN apt-get source -y squid3
+RUN ls -l 
 RUN apt-get build-dep -y squid3
-RUN dpkg-source -x squid3_3.3.8-1ubuntu3.dsc
+RUN ls -l 
+RUN dpkg-source -x  squid3_3.5.27-1ubuntu1.3.dsc
+RUN ls -l 
 RUN patch squid3-3.3.8/debian/rules < rules.patch
 RUN patch squid3-3.3.8/src/ssl/gadgets.cc < gadgets.cc.patch
 RUN cd squid3-3.3.8 && dpkg-buildpackage -rfakeroot -b
