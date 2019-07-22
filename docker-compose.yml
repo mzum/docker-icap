@@ -1,5 +1,5 @@
 Squid:
-  image: mzum/docker-icap:3.5.27-2
+  image: mzum/docker-icap:v1.0.0
   ports:
     - "3128:3128"
   volumes:
