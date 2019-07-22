@@ -32,8 +32,8 @@ WORKDIR /tmp
 RUN apt-get update
 
 RUN apt-get install -y devscripts build-essential fakeroot libssl-dev
-RUN apt-get source squid3
-RUN apt-get build-dep squid3
+RUN apt-get source -y squid3
+RUN apt-get build-dep -y squid3
 RUN dpkg-source -x squid3_3.3.8-1ubuntu3.dsc
 RUN patch squid3-3.3.8/debian/rules < rules.patch
 RUN patch squid3-3.3.8/src/ssl/gadgets.cc < gadgets.cc.patch
