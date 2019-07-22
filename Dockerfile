@@ -32,7 +32,7 @@ WORKDIR /tmp
 RUN apt-get update
 RUN ls -l /etc/apt/
 
-RUN apt-get install -y devscripts build-essential fakeroot libssl-dev
+RUN apt-get install -y devscripts build-essential fakeroot libssl-dev libcrypto++-dev
 RUN apt-get source -y squid3
 RUN ls -l 
 RUN apt-get build-dep -y squid3
