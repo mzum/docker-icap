@@ -24,21 +24,21 @@ RUN apt-get upgrade -y
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y squid=${SQUID_VERSION}*
 
-RUN apt-get update \ 
- && apt-get -y install traceroute curl inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0
- 
+RUN apt-get update \
+ && apt-get -y install traceroute curl wget inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0
+
 # squid compile
 WORKDIR /tmp
 RUN apt-get update
 RUN ls -l /etc/apt/
 
-RUN apt-get install -y devscripts build-essential fakeroot libssl-dev libcrypto++-dev
+RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev
 RUN apt-get source -y squid3
-RUN ls -l 
+RUN ls -l
 RUN apt-get build-dep -y squid3
-RUN ls -l 
+RUN ls -l
 # RUN dpkg-source -x  squid3_3.5.27-1ubuntu1.3.dsc
-# RUN ls -l 
+# RUN ls -l
 # RUN patch squid3-3.3.8/debian/rules < rules.patch
 # RUN patch squid3-3.3.8/src/ssl/gadgets.cc < gadgets.cc.patch
 # RUN cd squid3-3.3.8 && dpkg-buildpackage -rfakeroot -b
@@ -65,7 +65,7 @@ RUN a2dissite 000-default
 RUN a2ensite qlproxy
 RUN service apache2 restart
 
-# perform squid installation 
+# perform squid installation
 RUN apt-get install -y ssl-cert
 RUN apt-get install -y squid-langpack
 RUN dpkg --install squid3-common_3.3.8-1ubuntu3_all.deb
