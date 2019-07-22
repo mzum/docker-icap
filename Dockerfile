@@ -17,7 +17,7 @@ RUN cp -p /etc/apt/sources.list /etc/apt/sources.list~
 RUN ls -l /etc/apt/
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get upgrade -y
 
 # Update ubuntu and get squid
 RUN apt-get update \
@@ -59,7 +59,7 @@ RUN dpkg --install squid3-common_3.3.8-1ubuntu3_all.deb
 RUN dpkg --install squid3_3.3.8-1ubuntu3_amd64.deb
 RUN dpkg --install squidclient_3.3.8-1ubuntu3_amd64.deb
 RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get upgrade -y
 
 # HTTPS filtering Squid / original SSL certificates
 RUN ln -s /usr/lib/squid3/ssl_crtd /bin/ssl_crtd
