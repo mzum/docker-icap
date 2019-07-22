@@ -12,6 +12,11 @@ ENV SQUID_VERSION=3.5.27 \
     SQUID_LOG_DIR=/var/log/squid \
     SQUID_USER=proxy
 
+
+# Update ubuntu and get squid
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y squid=${SQUID_VERSION}*
+
 # sources.list
 RUN apt-get update
 RUN cp -p /etc/apt/sources.list /etc/apt/sources.list~
@@ -19,10 +24,6 @@ RUN ls -l /etc/apt/
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
-
-# Update ubuntu and get squid
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y squid=${SQUID_VERSION}*
 
 RUN apt-get update \
  && apt-get -y install traceroute curl wget inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0 python-pip
@@ -32,7 +33,7 @@ WORKDIR /tmp
 RUN apt-get update
 RUN ls -l /etc/apt/
 
-RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack
+RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack apache2 libapache2-mod-wsgi
 RUN apt-get source -y squid3
 RUN ls -l
 RUN apt-get build-dep -y squid3
