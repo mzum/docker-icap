@@ -33,7 +33,7 @@ WORKDIR /tmp
 RUN apt-get update
 RUN ls -l /etc/apt/
 
-RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack apache2 libapache2-mod-wsgi
+RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack apache2 libapache2-mod-wsgi libecap
 RUN apt-get source -y squid3
 RUN ls -l
 RUN apt-get build-dep -y squid3
