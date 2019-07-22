@@ -34,20 +34,19 @@ RUN apt-get update
 RUN ls -l /etc/apt/
 
 RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack apache2 libapache2-mod-wsgi libpcap-dev
-RUN apt-get install -y libpcap-dev libpcap0.8 libpcap0.8-dbg libpcap0.8-dev
+RUN apt-get install -y libpcap-dev libpcap0.8 libpcap0.8-dbg libpcap0.8-dev python-libpcap
 RUN apt-get source -y squid3
-RUN ls -l
 RUN apt-get build-dep -y squid3
-RUN ls -l
-# RUN dpkg-source -x  squid3_3.5.27-1ubuntu1.3.dsc
-# RUN ls -l
-# RUN patch squid3-3.3.8/debian/rules < rules.patch
-# RUN patch squid3-3.3.8/src/ssl/gadgets.cc < gadgets.cc.patch
-# RUN cd squid3-3.3.8 && dpkg-buildpackage -rfakeroot -b
+
 COPY rules.patch /tmp/rules.patch
-RUN chmod 755 /tmp/rules.patch
 COPY gadgets.cc.patch /tmp/gadgets.cc.patch
-RUN chmod 755 /tmp/gadgets.cc.patch
+RUN chmod 744 /tmp/rules.patch
+RUN chmod 744 /tmp/gadgets.cc.patch
+
+RUN cp -p /etc/squid/squid.conf /etc/squid/squid.conf~
+COPY squid.conf /etc/squid.conf
+RUN chmod 744 /etc/squid/squid.conf
+RUN ls -l
 
 RUN patch squid3-3.5.27/debian/rules < rules.patch
 RUN patch squid3-3.5.27/src/ssl/gadgets.cc < gadgets.cc.patch
