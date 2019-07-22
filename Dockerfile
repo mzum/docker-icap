@@ -26,14 +26,16 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 RUN apt-get update \
- && apt-get -y install traceroute curl wget inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0 python-pip
+ && apt-get -y install traceroute curl wget inetutils-tools inetutils-traceroute \ 
+ inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0 python-pip
 
 # squid compile
 WORKDIR /tmp
 RUN apt-get update
 RUN ls -l /etc/apt/
 
-RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev ssl-cert squid-langpack apache2 libapache2-mod-wsgi libpcap-dev
+RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev \ 
+ ssl-cert squid-langpack apache2 libapache2-mod-wsgi libpcap-dev
 RUN apt-get install -y libpcap-dev libpcap0.8 libpcap0.8-dbg libpcap0.8-dev python-libpcap
 RUN apt-get source -y squid3
 RUN apt-get build-dep -y squid3
