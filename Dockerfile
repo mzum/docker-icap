@@ -15,7 +15,7 @@ ENV SQUID_VERSION=3.5.27 \
 # sources.list
 RUN cp -p /etc/apt/sources.list /etc/apt/sources.list~
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-RUN sudo apt-get update
+RUN apt-get update
 
 # Update ubuntu and get squid
 RUN apt-get update \
