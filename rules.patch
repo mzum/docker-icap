@@ -6,6 +6,7 @@
  		--mandir=/usr/share/man \
 +		--enable-ssl \
 +		--enable-ssl-crtd \
++		--enable-openssl \
  		--enable-inline \
  		--enable-async-io=8 \
  		--enable-storeio="ufs,aufs,diskd,rock" \
