@@ -29,6 +29,7 @@ RUN apt-get update \
 # squid compile
 WORKDIR /tmp
 RUN apt-get update
+RUN ls -l /etc/apt/
 
 RUN apt-get install -y devscripts build-essential fakeroot libssl-dev
 RUN apt-get source -y squid3
