@@ -44,6 +44,8 @@ RUN ls -l
 # RUN cd squid3-3.3.8 && dpkg-buildpackage -rfakeroot -b
 COPY rules.patch /tmp/rules.patch
 RUN chmod 755 /tmp/rules.patch
+COPY gadgets.cc.patch /tmp/gadgets.cc.patch
+RUN chmod 755 /tmp/gadgets.cc.patch
 
 RUN patch squid3-3.5.27/debian/rules < rules.patch
 RUN patch squid3-3.5.27/src/ssl/gadgets.cc < gadgets.cc.patch
