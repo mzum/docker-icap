@@ -39,9 +39,12 @@ RUN apt-get build-dep -y squid3
 RUN ls -l 
 # RUN dpkg-source -x  squid3_3.5.27-1ubuntu1.3.dsc
 # RUN ls -l 
-RUN patch squid3-3.3.8/debian/rules < rules.patch
-RUN patch squid3-3.3.8/src/ssl/gadgets.cc < gadgets.cc.patch
-RUN cd squid3-3.3.8 && dpkg-buildpackage -rfakeroot -b
+# RUN patch squid3-3.3.8/debian/rules < rules.patch
+# RUN patch squid3-3.3.8/src/ssl/gadgets.cc < gadgets.cc.patch
+# RUN cd squid3-3.3.8 && dpkg-buildpackage -rfakeroot -b
+RUN patch squid3-3.5.27/debian < rules.patch
+RUN patch squid3-3.5.27/src/ssl/gadgets.cc < gadgets.cc.patch
+RUN cd squid3-3.5.27 && dpkg-buildpackage -rfakeroot -b
 RUN apt-get update
 
 # Install Diladele Web Safety
