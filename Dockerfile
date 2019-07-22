@@ -33,7 +33,7 @@ WORKDIR /tmp
 RUN apt-get update
 RUN ls -l /etc/apt/
 
-RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack apache2 libapache2-mod-wsgi libpcap-dev
+RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev ssl-cert squid-langpack apache2 libapache2-mod-wsgi libpcap-dev
 RUN apt-get install -y libpcap-dev libpcap0.8 libpcap0.8-dbg libpcap0.8-dev python-libpcap
 RUN apt-get source -y squid3
 RUN apt-get build-dep -y squid3
@@ -67,18 +67,16 @@ RUN apt-get update
 ##RUN service apache2 restart
 
 # perform squid installation
-RUN apt-get install -y ssl-cert
-RUN apt-get install -y squid-langpack
-RUN dpkg --install squid3-common_3.3.8-1ubuntu3_all.deb
-RUN dpkg --install squid3_3.3.8-1ubuntu3_amd64.deb
-RUN dpkg --install squidclient_3.3.8-1ubuntu3_amd64.deb
+#######RUN dpkg --install squid3-common_3.3.8-1ubuntu3_all.deb
+#######RUN dpkg --install squid3_3.3.8-1ubuntu3_amd64.deb
+#######RUN dpkg --install squidclient_3.3.8-1ubuntu3_amd64.deb
 RUN apt-get update
 RUN apt-get upgrade -y
 
 # HTTPS filtering Squid / original SSL certificates
-RUN ln -s /usr/lib/squid3/ssl_crtd /bin/ssl_crtd
-RUN /bin/ssl_crtd -c -s /var/spool/squid3_ssldb
-RUN chown -R proxy:proxy /var/spool/squid3_ssldb
+#######RUN ln -s /usr/lib/squid3/ssl_crtd /bin/ssl_crtd
+#######RUN /bin/ssl_crtd -c -s /var/spool/squid3_ssldb
+#######RUN chown -R proxy:proxy /var/spool/squid3_ssldb
 
 # integrate it with Diladele Web Safety as ICAP server
 ##RUN cp /etc/squid3/squid.conf /etc/squid3/squid.conf.default
