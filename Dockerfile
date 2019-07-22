@@ -38,13 +38,13 @@ RUN apt-get install -y libpcap-dev libpcap0.8 libpcap0.8-dbg libpcap0.8-dev pyth
 RUN apt-get source -y squid3
 RUN apt-get build-dep -y squid3
 
-COPY rules.patch /tmp/rules.patch
-COPY gadgets.cc.patch /tmp/gadgets.cc.patch
+COPY files/rules.patch /tmp/rules.patch
+COPY files/gadgets.cc.patch /tmp/gadgets.cc.patch
 RUN chmod 744 /tmp/rules.patch
 RUN chmod 744 /tmp/gadgets.cc.patch
 
 RUN cp -p /etc/squid/squid.conf /etc/squid/squid.conf~
-COPY squid.conf /etc/squid.conf
+COPY files/squid.conf /etc/squid.conf
 RUN chmod 744 /etc/squid/squid.conf
 RUN ls -l
 
