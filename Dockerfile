@@ -18,7 +18,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update \ 
- && apt-get install traceroute curl inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0 \
+ && apt-get -y install traceroute curl inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0 \
  && rm -rf /var/lib/apt/lists/*
  
 # squid compile
