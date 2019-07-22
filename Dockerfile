@@ -12,6 +12,11 @@ ENV SQUID_VERSION=3.5.27 \
     SQUID_LOG_DIR=/var/log/squid \
     SQUID_USER=proxy
 
+# sources.list
+RUN cp -p /etc/apt/sources.list /etc/apt/sources.list~
+RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+RUN sudo apt-get update
+
 # Update ubuntu and get squid
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y squid=${SQUID_VERSION}* \
