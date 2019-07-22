@@ -15,10 +15,13 @@ ENV SQUID_VERSION=3.5.27 \
 # Update ubuntu and get squid
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y squid=${SQUID_VERSION}* \
+ && apt-get install traceroute curl inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet \
  && rm -rf /var/lib/apt/lists/*
 
 # squid compile
 WORKDIR /tmp
+RUN apt-get update
+
 apt-get install devscripts build-essential fakeroot libssl-dev
 apt-get source squid3
 sudo apt-get build-dep squid3
