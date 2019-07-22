@@ -14,6 +14,7 @@ ENV SQUID_VERSION=3.5.27 \
 
 # sources.list
 RUN cp -p /etc/apt/sources.list /etc/apt/sources.list~
+RUN ls -l /etc/apt/
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 RUN apt-get update
 
