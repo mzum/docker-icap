@@ -25,9 +25,9 @@ RUN apt-get update \
 WORKDIR /tmp
 RUN apt-get update
 
-RUN apt-get -y install devscripts build-essential fakeroot libssl-dev
-RUN apt-get -y source squid3
-RUN apt-get -y build-dep squid3
+RUN apt-get install -y devscripts build-essential fakeroot libssl-dev
+RUN apt-get source squid3
+RUN apt-get build-dep squid3
 RUN dpkg-source -x squid3_3.3.8-1ubuntu3.dsc
 RUN patch squid3-3.3.8/debian/rules < rules.patch
 RUN patch squid3-3.3.8/src/ssl/gadgets.cc < gadgets.cc.patch
@@ -35,7 +35,7 @@ RUN cd squid3-3.3.8 && dpkg-buildpackage -rfakeroot -b
 
 # Install Diladele Web Safety
 RUN wget http://updates.diladele.com/qlproxy/binaries/3.0.0.3E4A/amd64/release/ubuntu12/qlproxy-3.0.0.3E4A_amd64.deb
-RUN apt-get -y install python-pip
+RUN apt-get install -y python-pip
 RUN pip install django==1.5
 RUN apt-get -y install apache2 libapache2-mod-wsgi
 
@@ -46,8 +46,8 @@ RUN a2ensite qlproxy
 RUN service apache2 restart
 
 # perform squid installation 
-RUN apt-get -y install ssl-cert
-RUN apt-get -y install squid-langpack
+RUN apt-get install -y ssl-cert
+RUN apt-get install -y squid-langpack
 RUN dpkg --install squid3-common_3.3.8-1ubuntu3_all.deb
 RUN dpkg --install squid3_3.3.8-1ubuntu3_amd64.deb
 RUN dpkg --install squidclient_3.3.8-1ubuntu3_amd64.deb
