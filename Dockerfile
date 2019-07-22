@@ -25,14 +25,14 @@ RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y squid=${SQUID_VERSION}*
 
 RUN apt-get update \
- && apt-get -y install traceroute curl wget inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0
+ && apt-get -y install traceroute curl wget inetutils-tools inetutils-traceroute inetutils-ping inetutils-telnet ca-certificates libcurl4 libidn11 libnghttp2-14 libpsl5 librtmp1 libshishi0 python-pip
 
 # squid compile
 WORKDIR /tmp
 RUN apt-get update
 RUN ls -l /etc/apt/
 
-RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev
+RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack
 RUN apt-get source -y squid3
 RUN ls -l
 RUN apt-get build-dep -y squid3
