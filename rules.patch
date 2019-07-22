@@ -1,0 +1,12 @@
+--- rules.org	2018-08-08 17:49:18.000000000 +0000
++++ rules	2019-07-22 16:28:07.977510800 +0000
+@@ -24,6 +24,9 @@
+ 		--sysconfdir=/etc/squid \
+ 		--libexecdir=/usr/lib/squid \
+ 		--mandir=/usr/share/man \
++		--enable-ssl \
++		--enable-ssl-crtd \
++		--with-openssl \
+ 		--enable-inline \
+ 		--disable-arch-native \
+ 		--enable-async-io=8 \
