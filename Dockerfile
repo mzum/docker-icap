@@ -34,6 +34,7 @@ RUN apt-get update
 RUN ls -l /etc/apt/
 
 RUN apt-get install -y devscripts build-essential fakeroot libcrypto++-dev libssl1.0-dev squid-langpack apache2 libapache2-mod-wsgi libpcap-dev
+RUN apt-get install -y libpcap-dev libpcap0.8 libpcap0.8-dbg libpcap0.8-dev
 RUN apt-get source -y squid3
 RUN ls -l
 RUN apt-get build-dep -y squid3
