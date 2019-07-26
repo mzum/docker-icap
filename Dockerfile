@@ -83,7 +83,7 @@ RUN apt-get upgrade -y
 # integrate it with Diladele Web Safety as ICAP server
 ##RUN cp /etc/squid3/squid.conf /etc/squid3/squid.conf.default
 ##RUN patch /etc/squid3/squid.conf < squid.conf.patch
-RUN /usr/sbin/squid3 -k parse
+##RUN /usr/sbin/squid3 -k parse
 
 RUN rm -rf /var/lib/apt/lists/*
 
