@@ -2,6 +2,4 @@ Squid:
   image: mzum/docker-icap:1.0.0
   ports:
     - "3128:3128"
-  volumes:
-    - /srv/docker/squid/cache:/var/spool/squid
   restart: always
