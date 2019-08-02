@@ -87,8 +87,16 @@ RUN apt-get upgrade -y
 
 RUN rm -rf /var/lib/apt/lists/*
 
-COPY entrypoint.sh /sbin/entrypoint.sh
-RUN chmod 755 /sbin/entrypoint.sh
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod 755 /usr/local/bin/entrypoint.sh
+RUN ln -s usr/local/bin/entrypoint.sh /      # backwards compat
+
+RUN ls -alrt /
 
 EXPOSE 3128/tcp
-ENTRYPOINT ["/sbin/entrypoint.sh"]
+##############ENTRYPOINT ["/sbin/entrypoint.sh"]
+###CMD ping localhost
+
+ENTRYPOINT ["/bin/bash","entrypoint.sh"]
+CMD ["squid"]
+####CMD ["-k parse"]
