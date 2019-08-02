@@ -1,13 +1,14 @@
---- rules.org   2018-08-08 17:49:18.000000000 +0000
-+++ rules.new   2019-07-22 16:43:36.562653100 +0000
-@@ -24,6 +24,9 @@
-                --sysconfdir=/etc/squid \
-                --libexecdir=/usr/lib/squid \
-                --mandir=/usr/share/man \
-+               --enable-ssl \
-+               --enable-ssl-crtd \
-+               --with-openssl \
-+               --enable-useragent-log \
-                --enable-inline \
-                --disable-arch-native \
-                --enable-async-io=8 \
+--- rules.org	2018-08-08 19:49:18.000000000 +0200
++++ rules	2019-07-22 22:53:42.130446000 +0200
+@@ -24,6 +24,11 @@
+ 		--sysconfdir=/etc/squid \
+ 		--libexecdir=/usr/lib/squid \
+ 		--mandir=/usr/share/man \
++		--enable-ssl \
++		--enable-ssl-crtd \
++		--with-openssl \
++		--enable-ecap \
++		--enable-useragent-log \
+ 		--enable-inline \
+ 		--disable-arch-native \
+ 		--enable-async-io=8 \ 
